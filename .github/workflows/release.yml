@@ -24,6 +24,7 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           git-branch: 'release-from-${{ github.sha }}'
           git-message: 'chore(release): {version}'
+          skip-git-pull: true
 
       - name: create PR with release info
         if: steps.changelog.outputs.skipped == 'false'
