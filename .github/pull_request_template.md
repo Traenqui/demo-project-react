@@ -27,3 +27,6 @@ Fixes # (issue-number)
 - [ ] New and existing unit tests pass locally with my changes
 - [ ] Created separate branch for separate bug/feature/documentation
 - [ ] Any dependent changes have been merged and published in downstream modules
+
+## PR Title
+Please ensure the PR title follows the [Conventional Commits](https://www.conventionalcommits.org/) standard.
