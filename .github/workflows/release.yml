@@ -13,9 +13,9 @@ jobs:
 
       - name: conventional Changelog Action
         id: changelog
-        uses: TriPSs/conventional-changelog-action@v5
+        uses: TriPSs/conventional-changelog-action@v6
         with:
-          github-token: ${{ secrets.CHANGELOG_RELEASE }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: create release
         uses: softprops/action-gh-release@v2
@@ -24,4 +24,4 @@ jobs:
           name: ${{ steps.changelog.outputs.tag }}
           tag_name: ${{ steps.changelog.outputs.tag }}
           body: ${{ steps.changelog.outputs.clean_changelog }}
-          token: ${{ secrets.CHANGELOG_RELEASE }}
+          token: ${{ secrets.GITHUB_TOKEN }}
