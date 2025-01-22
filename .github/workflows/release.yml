@@ -10,6 +10,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: create temporary branch
         run: git branch "release-from-${{ github.sha }}" "${{ github.sha }}"
