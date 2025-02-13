@@ -55,5 +55,5 @@ jobs:
         run: |
           git fetch origin
           git checkout master
-          git merge --no-ff "release-from-${{ github.sha }}"
+          git merge --no-ff "origin/release-from-${{ github.sha }}"
           git push origin master
