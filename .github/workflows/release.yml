@@ -38,7 +38,7 @@ jobs:
       - name: merge PR with release info
         if: steps.changelog.outputs.skipped == 'false'
         id: merge-pr
-        run: gh pr merge --admin --squash --subject 'Squash and merge release info' --delete-branch
+        run: gh pr merge --admin --merge --subject 'Squash and merge release info' --delete-branch
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
@@ -50,4 +50,10 @@ jobs:
           tag: ${{ steps.changelog.outputs.tag }}
           name: ${{ steps.changelog.outputs.tag }}
           body: ${{ steps.changelog.outputs.clean_changelog }}
-          
+
+      - name: Merge release tag into master
+        run: |
+          git fetch origin
+          git checkout master
+          git merge --no-ff "release-from-${{ github.sha }}"
+          git push origin master
