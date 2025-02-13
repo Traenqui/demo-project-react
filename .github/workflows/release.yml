@@ -38,7 +38,7 @@ jobs:
       - name: merge PR with release info
         if: steps.changelog.outputs.skipped == 'false'
         id: merge-pr
-        run: gh pr merge --admin --merge --subject 'Squash and merge release info' --delete-branch
+        run: gh pr merge --admin --squash --subject 'Squash and merge release info' --delete-branch
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
