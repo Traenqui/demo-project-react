@@ -50,10 +50,3 @@ jobs:
           tag: ${{ steps.changelog.outputs.tag }}
           name: ${{ steps.changelog.outputs.tag }}
           body: ${{ steps.changelog.outputs.clean_changelog }}
-
-      - name: Merge release tag into master
-        run: |
-          git fetch origin
-          git checkout master
-          git merge --no-ff "origin/release-from-${{ github.sha }}"
-          git push origin master
