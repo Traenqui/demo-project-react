@@ -21,7 +21,7 @@ jobs:
       id-token: write # to enable use of OIDC for npm provenance
 
     outputs:
-      released: ${{ steps.release.outputs.new_release_version }}
+      released: ${{ steps.semantic.outputs.new_release_published }}
 
     steps:
       - name: Setup | Checkout Repository on Release Branch
@@ -39,7 +39,6 @@ jobs:
             @semantic-release/git
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          
           
   deploy:
     needs: release
